@@ -8,6 +8,12 @@ body {
 	text-align: center;
 	padding: 10px;
 }
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
 #wrapper {
 	width: 450px;
 	background-color: white;
