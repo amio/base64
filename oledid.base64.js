@@ -1,6 +1,6 @@
 /*
 	Created by Ole Morten Didriksen, 2012.08.31
-	Repository: http://github.oledid.com/base64
+	Repository: http://github.com/oledid/base64
 */
 
 (function(){
