@@ -16,6 +16,7 @@
 		$wrapper.find("input[type='file']").change(fileInputChange);
 		$wrapper.find(".encode").click(encodeClick);
 		$wrapper.find(".decode").click(decodeClick);
+		$wrapper.find(".output").click(outputClick);
 	};
 	
 	function fileInputChange(event)
@@ -52,5 +53,12 @@
 			result = "-errorvalue-";
 		}
 		$wrapper.find(".output").text(result);
+	}
+	
+	function outputClick(event)
+	{
+		var $target = $(event.target);
+		$target.focus();
+		$target.select();
 	}
 }());
