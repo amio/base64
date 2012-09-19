@@ -13,11 +13,21 @@
 	root.Main = function(wrapperSelector)
 	{
 		$wrapper = $(wrapperSelector);
+		if (!hasRequiredFunctionality())
+		{
+			$wrapper.html("Your browser does not support atob, btoa or FileReader.<br />As this website only aims to use this functionality (not replace it), you should look for what you need elsewhere.<br />Or you can use a newer browser.");
+			return;
+		}
 		$wrapper.find("input[type='file']").change(fileInputChange);
 		$wrapper.find(".encode").click(encodeClick);
 		$wrapper.find(".decode").click(decodeClick);
 		$wrapper.find(".output").click(outputClick);
 	};
+	
+	function hasRequiredFunctionality()
+	{
+		return typeof atob != "undefined" && typeof btoa != "undefined" && typeof FileReader != "undefined";
+	}
 	
 	function fileInputChange(event)
 	{
