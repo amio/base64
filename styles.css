@@ -8,10 +8,14 @@ body {
 	text-align: center;
 	padding: 10px;
 }
-a {
+
+a, .link {
 	text-decoration: none;
+	color: #23D;
+	cursor: pointer;
 }
-a:hover {
+a:hover, .link:hover {
+	color: #34D;
 	text-decoration: underline;
 }
 #wrapper {
@@ -20,19 +24,12 @@ a:hover {
 	border: 1px solid black;
 	margin: auto;
 	padding: 20px;
-	-webkit-border-radius: 14px;
-	-moz-border-radius: 14px;
-	border-radius: 14px;
-	-webkit-box-shadow: 10px 10px 5px #888;
-	-moz-box-shadow: 10px 10px 5px #888;
-	box-shadow: 10px 10px 5px #888;
 }
 #wrapper div {
 	padding: 10px 0px;
 	text-align: left;
 }
 #wrapper label {
-	display: block;
 	font-weight: bold;
 }
 #wrapper textarea {
@@ -40,4 +37,8 @@ a:hover {
 }
 #wrapper input[type='button'] {
 	width: 120px;
+}
+
+#fileInput {
+	width: 0px;
 }
