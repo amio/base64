@@ -36,6 +36,7 @@ h1 {
     display: table-cell;
     overflow: hidden;
     position: relative;
+    border: 1px solid #CCC;
 }
 
 #ende {
@@ -47,21 +48,27 @@ h1 {
 }
 
 .textarea-title {
-    line-height: 1.5em;
-    height: 1.5em;
+    line-height: 1.8em;
+    height: 1.8em;
     overflow: hidden;
+    padding: 0 0.4em;
+    border-bottom: 1px dashed #DDD;
 }
 
 .textarea-title em {
-    font-weight: bold;
-    text-decoration: underline;
+    color: #333;
+    font-style: normal;
 }
 
 #wrapper textarea {
-    width: 385px;
+    display: block;
+    width: 375px;
+    max-width: 375px;
+    min-height:200px;
     outline: none;
-    min-height: 200px;
-    border: 1px solid #CCC;
+    border: none;
+    padding: 5px;
+    margin: 0;
     font: 12px/14px Menlo, Consolas, monospace;
 }
 
@@ -133,6 +140,8 @@ h1 {
     border: 2px rgba(255,255,255,0.7) dashed;
     margin: -0.3em -5em;
     -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    transform: scale(0.7);
 }
 
 #fork-me-on-github:hover{ opacity: 0.9; }
