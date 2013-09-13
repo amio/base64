@@ -48,4 +48,7 @@ h1 { text-align: center }
     width: 0;
     opacity: 0.01;
     outline: none;
+    z-index: -1;
+    position: relative;
+    left: -7em;
 }
