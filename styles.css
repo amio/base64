@@ -21,9 +21,14 @@ h1 { text-align: center }
 }
 
 #source, #base64 {
-    width: 395px;
+    width: 380px;
     display: table-cell;
     overflow: hidden;
+    position: relative;
+}
+
+#ende {
+    width: auto;
 }
 
 .dragover #source {
@@ -34,6 +39,11 @@ h1 { text-align: center }
     line-height: 2em;
     height: 2em;
     overflow: hidden;
+}
+
+.textarea-title em {
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 #wrapper textarea {
@@ -51,4 +61,22 @@ h1 { text-align: center }
     z-index: -1;
     position: relative;
     left: -7em;
+}
+
+#dropMask {
+    display: none
+}
+
+.dragover #dropMask {
+    display: table-cell;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #EEE;
+    border: 3px dashed #AAA;
+    line-height: 3em;
 }

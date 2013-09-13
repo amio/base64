@@ -14,6 +14,7 @@
   var eWrapper = $('#wrapper'),
     eTextInput = $('#textInput'),
     eFileInput = $('#fileInput'),
+    eDropMask = $('#dropMask'),
     eBase64 = $('#textBase64');
 
   if (!hasRequiredFunctionality()) {
@@ -23,35 +24,38 @@
     return;
   }
 
-  eTextInput.oninput = encodeText;
-  eFileInput.onchange = encodeFile;
-  eBase64.oninput = decodeBase64;
+  eTextInput.oninput = handleTextInput;
+  eFileInput.onchange = handleFileInput;
 
-  var holder = document.body;
-  holder.ondragover = function () { this.className = 'dragover' };
-  holder.ondragend = function () { this.className = '' };
-  holder.ondrop = encodeFileDropped;
+  document.body.ondragover = FileDragHover;
+  eDropMask.ondragleave = FileDragHover;
+  eDropMask.ondrop = onFileDropped;
+
+  eBase64.oninput = handleBase64Input;
+  eBase64.onfocus = handleBase64Focus;
 
   function hasRequiredFunctionality() {
     return typeof atob != "undefined" && typeof btoa != "undefined" && typeof FileReader != "undefined";
   }
 
-  function encodeFileDropped(e) {
-    this.className = '';
+  // file drag hover
+  function FileDragHover(e) {
+    e.stopPropagation();
     e.preventDefault();
-
-    var file = e['dataTransfer'].files[0],
-      reader = new FileReader();
-    reader.onload = function (event) {
-      eBase64.value = event.target.result;
-      console.log(event.target.result);
-    };
-    reader.readAsDataURL(file);
-
-    return false;
+    console.log(e.type);
+    document.body.className = (e.type == "dragover" ? "dragover" : "");
   }
 
-  function encodeText() {
+  function onFileDropped(e) {
+    // cancel event and hover styling
+    FileDragHover(e);
+
+    var files = e.target.files || e['dataTransfer'].files;
+    eTextInput.value = '';
+    encodeFile(files[0]);
+  }
+
+  function handleTextInput() {
     var input = eTextInput.value;
     var result;
     try{
@@ -63,20 +67,23 @@
     eBase64.value = result;
   }
 
-  function encodeFile() {
+  function handleFileInput() {
     var files = event.target.files;
-    if ( !( files && files.length == 1) )
-      return;
-    var reader = new FileReader();
-    reader.onload = (function (file) {
-      return function (e) {
-        eBase64.value = e.target.result;
-      };
-    })(files[0]);
-    reader.readAsDataURL(files[0]);
+    if ( files && files.length == 1 ){
+      eTextInput.value = '';
+      encodeFile(files[0]);
+    }
   }
 
-  function decodeBase64() {
+  function encodeFile(file) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      eBase64.value = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function handleBase64Input() {
     var result;
     try{
       result = atob(eBase64.value);
@@ -85,6 +92,10 @@
       console.log(e.message);
     }
     eTextInput.value = result;
+  }
+
+  function handleBase64Focus() {
+    this.select();
   }
 
 }());
