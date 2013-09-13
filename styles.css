@@ -1,44 +1,51 @@
-body, div, h1, h2, h3, p {
-	padding: 0px;
-	margin: 0;
-}
-
-body {
-	background-color: whitesmoke;
-	text-align: center;
-	padding: 10px;
-}
+html, body { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background-color: whitesmoke; }
 
 a, .link {
-	text-decoration: none;
-	color: #23D;
-	cursor: pointer;
+    color: #23D;
+    cursor: pointer;
+    text-decoration: none;
 }
 a:hover, .link:hover {
-	color: #34D;
-	text-decoration: underline;
+    color: #34D;
+    cursor: pointer;
+    text-decoration: underline;
 }
+
+h1 { text-align: center }
+
 #wrapper {
-	width: 450px;
-	background-color: white;
-	border: 1px solid black;
-	margin: auto;
-	padding: 20px;
+    margin: auto;
+    width: 800px;
+    display: table;
+    border: 3px dashed transparent;
 }
-#wrapper div {
-	padding: 10px 0px;
-	text-align: left;
+
+#source, #base64 {
+    width: 395px;
+    display: table-cell;
+    overflow: hidden;
 }
-#wrapper label {
-	font-weight: bold;
+
+.dragover #source {
+    border-color:red;
 }
+
+.textarea-title {
+    line-height: 2em;
+    height: 2em;
+    overflow: hidden;
+}
+
 #wrapper textarea {
-	width: 450px;
-}
-#wrapper input[type='button'] {
-	width: 120px;
+    width: 385px;
+    outline: none;
+    min-height: 200px;
+    border: 1px solid #CCC;
+    font: 12px/14px Menlo, Consolas, monospace;
 }
 
 #fileInput {
-	width: 0px;
+    width: 0;
+    opacity: 0.01;
+    outline: none;
 }
