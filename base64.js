@@ -42,7 +42,6 @@
   function FileDragHover(e) {
     e.stopPropagation();
     e.preventDefault();
-    console.log(e.type);
     document.body.className = (e.type == "dragover" ? "dragover" : "");
   }
 
