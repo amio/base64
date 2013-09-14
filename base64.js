@@ -8,7 +8,7 @@
   'use strict';
 
   function $(selecterString) {
-    return document.querySelector(selecterString)
+    return document.querySelector(selecterString);
   }
 
   var eWrapper = $('#wrapper'),
@@ -28,11 +28,10 @@
   eFileInput.onchange = handleFileInput;
 
   document.body.ondragover = FileDragHover;
-  eDropMask.ondragleave = FileDragHover;
-  eDropMask.ondrop = onFileDropped;
+  document.body.onclick = FileDragHover; // clear drop mask while click
+  document.body.ondrop = onFileDropped;
 
   eBase64.oninput = handleBase64Input;
-  eBase64.onfocus = handleBase64Focus;
 
   function hasRequiredFunctionality() {
     return typeof atob != "undefined" && typeof btoa != "undefined" && typeof FileReader != "undefined";
@@ -91,10 +90,6 @@
       console.log(e.message);
     }
     eTextInput.value = result;
-  }
-
-  function handleBase64Focus() {
-    this.select();
   }
 
 }());
